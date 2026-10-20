@@ -67,6 +67,30 @@ h1{margin:0;text-align:center;font-weight:900;font-size:clamp(24px,6.9vw,31px);l
 .info bdi{display:block}
 .tel{font-weight:900;font-size:17px;letter-spacing:.04em;direction:ltr;unicode-bidi:isolate}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.paper{transform:translateY(-60px)}}
+
+.up{width:100%;background:var(--paper);border:3px solid var(--navy);border-radius:20px;box-shadow:0 7px 0 rgba(0,0,0,.14);padding:16px 16px 18px;display:grid;gap:11px}
+.up h2{margin:0;font-size:21px;font-weight:900;color:var(--navy);line-height:1.25;display:flex;align-items:center;gap:10px}
+.up h2 .tile{width:46px;height:46px;border-radius:13px}.up h2 .tile svg{width:28px;height:28px}
+.up h2 small{display:block;font-size:13.5px;font-weight:700;color:var(--muted)}
+.up label{display:grid;gap:4px;font-weight:800;font-size:14px;color:var(--navy)}
+.up input[type=text],.up input[type=tel],.up textarea{font:700 16px Cairo,system-ui,sans-serif;color:var(--navy);background:#F4F7FB;border:2px solid #DCE5EF;border-radius:12px;padding:10px 12px;width:100%;min-width:0}
+.up textarea{resize:vertical;min-height:64px}
+.up input:focus,.up textarea:focus{outline:3px solid var(--gold);outline-offset:1px;border-color:var(--navy)}
+.drop{position:relative;display:grid;place-items:center;gap:2px;text-align:center;padding:16px 10px;border:3px dashed var(--navy);border-radius:16px;background:#FFF7E6;cursor:pointer;font-weight:900;color:var(--navy);transition:background .18s,transform .18s}
+.drop:hover,.drop.on{background:#FFEDC2;transform:translateY(-2px)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop svg{width:34px;height:34px;fill:none;stroke:var(--navy);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.drop span{font-size:15.5px}.drop small{font-size:12.5px;font-weight:700;color:var(--muted)}
+.files{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.files li{display:flex;align-items:center;gap:8px;background:#F4F7FB;border-radius:10px;padding:6px 10px;font-weight:700;font-size:13.5px;color:var(--navy)}
+.files li span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:start}
+.files button{flex:none;border:0;background:var(--deep);color:#fff;width:24px;height:24px;border-radius:50%;font-weight:900;cursor:pointer;line-height:1}
+.send{font:900 18px Cairo,system-ui,sans-serif;color:var(--deep);background:var(--gold);border:3px solid var(--navy);border-radius:14px;padding:11px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s}
+.send:hover{transform:translateY(-2px)}.send:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.send:disabled{opacity:.6;cursor:wait}
+.msg{margin:0;font-weight:800;font-size:14.5px;text-align:center;min-height:1.3em}
+.msg.ok{color:#0b7a3b}.msg.err{color:#b3261e}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 </style>
 </head>
 <body>
@@ -80,6 +104,18 @@ h1{margin:0;text-align:center;font-weight:900;font-size:clamp(24px,6.9vw,31px);l
 <h1 class="rise" style="--d:.15s">طباعة بأعلى جودة .. وأقل سعر</h1>
 <p class="en rise" style="--d:.22s">Highest Quality · Lowest Price</p>
 <div class="ticker rise" style="--d:.3s" aria-hidden="true"><div><span>ستيكرات<b>✦</b>Stickers<b>✦</b>أكواب<b>✦</b>Mugs<b>✦</b>تيشيرتات<b>✦</b>T-shirts<b>✦</b>ميداليات<b>✦</b>Keychains<b>✦</b></span><span>ستيكرات<b>✦</b>Stickers<b>✦</b>أكواب<b>✦</b>Mugs<b>✦</b>تيشيرتات<b>✦</b>T-shirts<b>✦</b>ميداليات<b>✦</b>Keychains<b>✦</b></span></div></div>
+<section class="up rise" style="--d:.34s" aria-labelledby="uph">
+<h2 id="uph"><span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M6.5 9.5L12 4l5.5 5.5" fill="none" stroke="#1D4B7B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v4a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-4" fill="none" stroke="#F0A81A" stroke-width="2.6" stroke-linecap="round"/></svg></span><span>ابعتلنا تصميمك<small>Send us your design</small></span></h2>
+<form id="upf" novalidate>
+<label>الاسم · Name<input type="text" name="name" autocomplete="name" maxlength="80" required></label>
+<label>رقم الموبايل · Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="20" dir="ltr" required></label>
+<label>ملاحظات · Notes<textarea name="note" maxlength="500" placeholder="اختياري: الكمية، المقاس، نوع الورق"></textarea></label>
+<div class="drop" id="drop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M6.5 9.5L12 4l5.5 5.5"/><path d="M4 15v4a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-4"/></svg><span>اضغط لاختيار ملف · Choose files</span><small>PDF · JPG · PNG · AI · PSD · DOC · ZIP · max 15MB</small><input type="file" id="fi" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.heic,.gif,.svg,.ai,.psd,.eps,.cdr,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar" aria-label="Choose files"></div>
+<ul class="files" id="fl"></ul>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="send" id="sb" type="submit">إرسال · Send</button>
+<p class="msg" id="msg" role="status" aria-live="polite"></p>
+</form></section>
 <ul class="links">
 <li class="rise" style="--d:.38s"><a class="box" style="--s:0s" href="https://www.instagram.com/cc.copycorner/" target="_blank" rel="noopener"><span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".3" stop-color="#FA7E1E"/><stop offset=".55" stop-color="#D62976"/><stop offset=".8" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ig)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/></svg></span><span class="txt"><strong>Instagram</strong><span>@cc.copycorner</span></span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="#0F3E6F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
 <li class="rise" style="--d:.46s"><a class="box" style="--s:.6s" href="https://www.facebook.com/Copy2Corner" target="_blank" rel="noopener"><span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M13.4 22v-7.6h2.6l.4-3h-3V9.5c0-.9.3-1.5 1.6-1.5h1.6V5.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.4V22z" fill="#fff"/></svg></span><span class="txt"><strong>Facebook</strong><span>Copy Corner</span></span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="#0F3E6F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
@@ -88,5 +124,32 @@ h1{margin:0;text-align:center;font-weight:900;font-size:clamp(24px,6.9vw,31px);l
 <p class="info rise" style="--d:.62s"><bdi>2 خالد ابن الوليد بجوار الكنيسة و اسفل مكتبة البتول</bdi><bdi dir="ltr">شيراتون المطار · Sheraton Al Matar</bdi><span class="tel">010 24 24 5302</span></p>
 </main>
 </div>
+<script>
+(function(){
+var ENDPOINT="https://script.google.com/macros/s/AKfycbyhmTsYJckxR0nf-cY6pI5gpqAc9jBS0GH-n5IBqOWBbBadDgmCMH-HMknDdESrLlBg/exec",MAX=15*1024*1024,MAXN=5,files=[];
+var $=function(i){return document.getElementById(i)},fi=$("fi"),fl=$("fl"),msg=$("msg"),f=$("upf"),sb=$("sb"),drop=$("drop");
+function say(t,c){msg.textContent=t;msg.className="msg "+(c||"")}
+function size(n){return n>1048576?(n/1048576).toFixed(1)+" MB":Math.max(1,Math.round(n/1024))+" KB"}
+function draw(){fl.innerHTML="";files.forEach(function(x,i){var li=document.createElement("li"),s=document.createElement("span"),b=document.createElement("button");s.textContent=x.name+" · "+size(x.size);b.type="button";b.textContent="×";b.setAttribute("aria-label","remove");b.onclick=function(){files.splice(i,1);draw()};li.appendChild(s);li.appendChild(b);fl.appendChild(li)})}
+fi.addEventListener("change",function(){say("");Array.prototype.forEach.call(fi.files,function(x){if(x.size>MAX){say("الملف "+x.name+" أكبر من 15MB · File too large","err")}else if(files.length>=MAXN){say("الحد الأقصى 5 ملفات · Max 5 files","err")}else files.push(x)});fi.value="";draw()});
+["dragenter","dragover"].forEach(function(e){drop.addEventListener(e,function(){drop.classList.add("on")})});
+["dragleave","drop"].forEach(function(e){drop.addEventListener(e,function(){drop.classList.remove("on")})});
+function b64(file){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result).split(",")[1]||"")};r.onerror=rej;r.readAsDataURL(file)})}
+f.addEventListener("submit",function(e){e.preventDefault();
+ var d=new FormData(f),name=(d.get("name")||"").trim(),phone=(d.get("phone")||"").trim();
+ if(d.get("website"))return;
+ if(!name||phone.replace(/\D/g,"").length<8){say("من فضلك اكتب الاسم ورقم موبايل صحيح · Enter name and a valid phone","err");return}
+ if(!files.length){say("اختار ملف واحد على الأقل · Choose at least one file","err");return}
+ if(!ENDPOINT){say("الإرسال غير مفعّل بعد · Upload not connected yet","err");return}
+ sb.disabled=true;say("جاري الرفع ... · Uploading ...");
+ Promise.all(files.map(function(x){return b64(x).then(function(c){return{name:x.name,type:x.type||"application/octet-stream",data:c}})})).then(function(arr){
+  return fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:name,phone:phone,note:(d.get("note")||"").trim(),files:arr})})
+ }).then(function(r){return r.json()}).then(function(j){
+  if(!j||!j.ok)throw new Error(j&&j.error||"fail");
+  files=[];draw();f.reset();say("تم الاستلام ✓ هنتواصل معاك قريب · Received, we will contact you soon","ok")
+ }).catch(function(){say("حصلت مشكلة .. جرب تاني أو كلمنا على 010 24 24 5302 · Failed, try again or call us","err")}).then(function(){sb.disabled=false})
+});
+})();
+</script>
 </body>
 </html>
