@@ -147,7 +147,7 @@ f.addEventListener("submit",function(e){e.preventDefault();
  }).then(function(r){return r.json()}).then(function(j){
   if(!j||!j.ok)throw new Error(j&&j.error||"fail");
   files=[];draw();f.reset();say("تم الاستلام ✓ هنتواصل معاك قريب · Received, we will contact you soon","ok")
- }).catch(function(){say("حصلت مشكلة .. جرب تاني أو كلمنا على 010 24 24 5302 · Failed, try again or call us","err")}).then(function(){sb.disabled=false})
+ }).catch(function(er){say("حصلت مشكلة .. جرب تاني أو كلمنا على 010 24 24 5302 · Failed, try again or call us ["+String(er&&er.message||er).slice(0,80)+"]","err")}).then(function(){sb.disabled=false})
 });
 })();
 </script>
